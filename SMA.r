@@ -113,4 +113,5 @@ library("tidytext")
 library("syuzhet")
 
 View(get_sentiments("afinn"))
-
+View(get_sentiments("bing"))
+View(get_sentiments("nrc"))
