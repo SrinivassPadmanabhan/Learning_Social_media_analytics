@@ -10,7 +10,7 @@ install.packages("RCurl", dependencies=TRUE)
 install.packages("tm", dependencies=TRUE)
 install.packages("plyr", dependencies=TRUE)
 install.packages("dplyr", dependencies=TRUE)
-
+install.packages("textdata", dependencies = TRUE)
 library(twitteR)
 library(ROAuth)
 library(plyr)
@@ -40,10 +40,10 @@ setup_twitter_oauth(consumer_key=consumerKey, consumer_secret=consumerSecret, ac
 
 #trend location
 trend_locations <- availableTrendLocations()
-View(trend_locations)
+#View(trend_locations)
 city_woeid = subset(trend_locations, name == "Chennai")$woeid
 trends = getTrends(city_woeid)
-View(trends)
+#View(trends)
 Hashtags = searchTwitter("#rajini", n=5000,lang = "en")
 length(Hashtags)
 #View(Hashtags)
@@ -57,7 +57,7 @@ write.csv(tweets_df, "E:\\SCMHRD\\Academics\\Sem - 2\\Social Media Analytics\\tw
 #to get the tweets we are using this command
 txt = sapply(Hashtags, function(x) x$getText())
   
-View(txt)
+#View(txt)
 length(txt)
 # to remove the rt via, @ symbol from the text
 txt = gsub("(RT|via)((?:\\b\\W*@\\w+)+)","", txt)
@@ -109,6 +109,8 @@ ggplot(data = SentimentScores, aes(x = sentiment, y = Score)) +
 geom_bar(aes(fill = sentiment), stat = "identity") +
 theme(legend.position = "none") +
 xlab("Sentiment") + ylab("Score") + ggtitle("Total Sentiment Score Based on Tweets")
+library("tidytext")
+library("syuzhet")
 
-
+View(get_sentiments("afinn"))
 
