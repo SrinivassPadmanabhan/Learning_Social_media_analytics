@@ -44,7 +44,9 @@ trend_locations <- availableTrendLocations()
 city_woeid = subset(trend_locations, name == "Chennai")$woeid
 trends = getTrends(city_woeid)
 #View(trends)
-Hashtags = searchTwitter("#rajini", n=5000,lang = "en")
+HashtagName = "cricbuzz"
+H1 = HashtagName %+% "#";
+Hashtags = searchTwitter("#", n=5000,lang = "en")
 length(Hashtags)
 #View(Hashtags)
 #ISO 639-1
@@ -52,11 +54,12 @@ tweets = Hashtags
 #?idply
 tweets_df <- ldply(tweets, function (t) t$toDataFrame())
 #View(tweets_df)
-write.csv(tweets_df, "E:\\SCMHRD\\Academics\\Sem - 2\\Social Media Analytics\\tweets_df.csv")
+write.csv(tweets_df, "E:\\SCMHRD\\Academics\\Sem - 2\\Social Media Analytics\\GLT\\Learning_Social_media_analytics\\tweets.csv")
 #View(tweets_df$text)
 #to get the tweets we are using this command
 txt = sapply(Hashtags, function(x) x$getText())
-  
+getwd()
+setw
 #View(txt)
 length(txt)
 # to remove the rt via, @ symbol from the text
